@@ -1,0 +1,66 @@
+﻿
+<h2>StudentDetails</h2>
+@{ 
+    string StudentRes=null;
+    if (ViewBag.marks > 35)
+    {
+        StudentRes = "pass";
+    }
+    else
+    {
+        StudentRes = "fail";
+    }
+}
+<div class="container-fluid">
+    <table class="table">
+        <tr>
+            <td>Student Id</td>
+            <td>@ViewBag.StudentId</td>
+        </tr>
+        <tr>
+            <td>Student Name</td>
+            <td>@ViewBag.StudentName</td>
+        </tr>
+        <tr>
+            <td>Student marks</td>
+            <td>@ViewBag.Marks</td>
+        </tr>
+        <tr>
+            <td>Student Result</td>
+            <td>@StudentRes</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                @if (StudentRes == "pass")
+                {
+                    <span class="text-success">Congratulations </span>
+                }
+                else
+                {
+                    <span class="text-danger">Better luck next time </span>
+
+                }
+            </td>
+
+        </tr>
+        <tr>
+            <td>Semister</td>
+            <td>
+                @for (int i = 1; i <= ViewBag.NoOfSem; i++)
+                {
+                    <span> @i</span>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Subject</td>
+            <td>
+                @foreach(var sub in ViewBag.Subject )
+                {
+                   <span>@sub</span>
+                }
+            </td>
+        </tr>
+    </table>
+</div>
+
