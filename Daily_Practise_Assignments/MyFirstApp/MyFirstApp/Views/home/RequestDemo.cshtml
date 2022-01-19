@@ -1,4 +1,5 @@
 ﻿
+
 <Doctype html>
     <html>
     <head>
@@ -27,11 +28,36 @@
             </ul>
         </nav>
         <div class="container-fluid">
-            <div class="jumbotron">
-                <h1>Asp.NET MVC ultimate guide</h1>
+            <table class="table">
+                <tr>
+                    <td>Url</td>
+                    <td>@ViewBag.Url</td>
+                </tr>
+                <tr>
+                    <td>Physical Application Path</td>
+                    <td>@ViewBag.PhysicalApplicationPath</td>
+                </tr>
+                <tr>
+                    <td>path</td>
+                    <td>@ViewBag.Path</td>
+                </tr>
+                <tr>
+                    <td>Browser Type</td>
+                    <td>@ViewBag.BrowserType</td>
+                </tr>
+                <tr>
+                    <td>QueryString</td>
+                    <td>@ViewBag.QueryString</td>
+                </tr>
+                <tr>
+                    <td>Http action method</td>
+                    <td>@ViewBag.HttpMethod</td>
+                </tr>
+            </table>
+               
             </div>
         </div>
     </body>
-    </html>
+</html>
 </Doctype>
 
