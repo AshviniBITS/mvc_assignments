@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "create";
+}
+
+<h2>create Product</h2>
+<form action="/Product/create" method="post">
+    <div class="form-group">
+        <label>"Product Id" </label>
+        <input type="text" class="form-control" id="txtproductid" placeholder="Product Id" name="ProductId" />
+
+
+    </div>
+    <div class="form-group">
+        <label>"Product Name" </label>
+        <input type="text" class="form-control" id="txtproductname" placeholder="Product Name" name="ProductName" />
+
+
+    </div>
+    <div class="form-group">
+        <label>"Product rate" </label>
+        <input type="text" class="form-control" id="txtproductrate" placeholder="Product rate" name="Productrate" />
+
+
+    </div>
+    <button>Submit</button>
+</form>
+
