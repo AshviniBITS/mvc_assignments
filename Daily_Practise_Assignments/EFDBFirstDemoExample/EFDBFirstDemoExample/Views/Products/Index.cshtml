@@ -1,0 +1,46 @@
+﻿@model List<EFDBFirstDemoExample.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/shared/_LayoutPage1.cshtml";
+}
+
+<h2>Products Detail</h2>
+<a href="/Products/create">Create</a>
+<form class="form-inline" action="/Products/index">
+    <label for="search" class="mr-1">Search</label>
+    <input type="search" class="form-control mr-1"   id="search" name="search" placeholder="search" value="@ViewBag.search" />
+    <buttton type="submit" class=" btn btn-primary">Go</buttton>
+</form>
+<table class="table">
+    <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Date Of Purchase</th>
+        <th>Availability status</th>
+        <th>Category id</th>
+        <th>Brand Id</th>
+        <th>status</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.ProductId</td>
+    <td>@item.ProductName</td>
+    <td>@item.Price.Value.ToString("C")</td>
+    <td>@item.DateOfPurchase.Value.ToString("d/M/yyyy")</td>
+    <td>@item.AvailabilityStatus</td>
+    <td>@item.CategoryId</td>
+    <td>@item.BrandId</td>
+    <td>@item.Active</td>
+    <td>
+        <a href="/Products/Details/@item.ProductId">Details</a>
+    </td>
+
+
+</tr>
+    }
+</table>
+
+
