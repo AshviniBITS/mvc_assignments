@@ -28,11 +28,22 @@
     </tr>
     <tr>
         <th>Category Id</th>
-        <td>@Model.CategoryId</td>
+        <td>
+        @if(Model.Category!=null)
+            {
+
+            @Model.Category.CategoryName
+            }
+        </td>
     </tr>
     <tr>
         <th>Brand Id</th>
-        <td>@Model.BrandId</td>
+      <td>
+          @if (Model.Brand != null)
+          {
+        @Model.Brand.BrandName
+          }
+      </td>
     </tr>
     <tr>
         <th>Status</th>
