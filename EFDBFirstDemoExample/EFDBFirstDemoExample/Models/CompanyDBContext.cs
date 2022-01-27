@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using EFDBFirstDemoExample.Migrations;
 
 namespace EFDBFirstDemoExample.Models
 {
@@ -10,6 +11,9 @@ namespace EFDBFirstDemoExample.Models
     {
         public CompanyDBContext(): base("MyConnectionString")
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<CompanyDBContext, Configuration>());
+
+
 
         }
         public DbSet<Brand> Brands { get; set; }
