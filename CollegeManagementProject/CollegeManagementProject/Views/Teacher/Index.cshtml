@@ -1,0 +1,335 @@
+﻿@model List<CollegeManagementProject.Models.Teacher>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<h2>Teachers Details</h2>
+<a class="btn btn-success" href="/Teacher/create">Create</a>
+
+<form class="form-inline" action="/Teacher/Index">
+    <form action="/Teacher/Index">
+        <div class="form-group">
+            <a href="#" class="list-group-item text-white" style="background-color:transparent">Search Using...</a>
+            <ul class="list-group" style="background-color:transparent">
+                <li class="list-group-item" style="background-color:transparent"><input type="text" name="teacherName" placeholder="teacherName" class="form-control" value="@ViewBag.teacherName" /></li>
+                <li class="list-group-item" style="background-color:transparent"><input type="text" name="email" placeholder="Email" class="form-control" value="@ViewBag.email" /></li>
+                <li class="list-group-item" style="background-color:transparent"><input type="text" name="DeptName" placeholder="DeptName" class="form-control" value="@ViewBag.DeptName" /></li>
+                <li @*class="list-group-item" style="background-color:transparent"><input type="text" name="mname" placeholder="Famous Menu" class="form-control" value="@ViewBag.mname" /></li>*@
+                <li class="list-group-item" style="background-color:transparent"><button type="submit" class="btn btn-dark" style="margin-left:60px">Search</button></li>
+            </ul>
+        </div>
+    </form>
+
+
+
+
+
+</form>
+    <table class="table">
+        @*<tr>
+                <th>Image</th>
+                <th>Teacher Id</th>
+                <th>Teacher Name</th>
+                <th>Email</th>
+                <th>Phone no</th>
+                <th>Date Of Joining</th>
+                <th>Address</th>
+                <th>Department Id</th>
+
+            </tr>*@
+        <tr class="table-secondary">
+            <th style="width:10%">
+                Image
+            </th>
+            <th style="width:10%">
+                @if (ViewBag.IconClass == "fa-sort-desc")
+                {
+                    <a href="/Teacher/Index?SortColumn=teacherId&IconClass=fa-sort-asc&PageNo=@ViewBag.PageNo" style="text-decoration: none; color: inherit">teacherId</a>
+                    if (ViewBag.SortColumn == "teacherId")
+                    {
+                        <i class="fa@ViewBag.IconClass"></i>
+                    }
+                }
+                else
+                {
+                    <a href="/Teacher/Index?SortColumn=teacherId&IconClass=fa-sort-desc&PageNo=@ViewBag.PageNo style="text-decoration:none;color:inherit">teacherId</a>
+                    if (ViewBag.SortColumn == "teacherId")
+                    {
+                        <i class="fa@ViewBag.IconClass"></i>
+                    }
+
+                }
+
+
+            </th>
+            <th style="width:10%">
+                @if (ViewBag.IconClass == "fa-sort-desc")
+                {
+                    <a href="/Teacher/Index?SortColumn=teacherName&IconClass=fa-sort-asc&PageNo=@ViewBag.PageNo" style="text-decoration:none;color:inherit">Teacher Name</a>
+                    if (ViewBag.SortColumn == "teacherName")
+                    {
+                        <i class="fa@ViewBag.IconClass"></i>
+                    }
+                }
+                else
+                {
+                    <a href="/Teacher/Index?SortColumn=teacherName&IconClass=fa-sort-desc&PageNo=@ViewBag.PageNo style="text-decoration:none;color:inherit"">Teacher Name</a>
+                    if (ViewBag.SortColumn == "teacherName")
+                    {
+                        <i class="fa@ViewBag.IconClass"></i>
+                    }
+
+                }
+            </th>
+            <th style="width:5%">
+                @if (ViewBag.IconClass == "fa-sort-desc")
+                {
+                    <a href="/Teacher/Index?SortColumn=Email&IconClass=fa-sort-asc&PageNo=1" style="text-decoration:none;color:inherit">Email</a>
+                    if (ViewBag.SortColumn == "Email")
+                    {
+                        <i class="fa@ViewBag.IconClass"></i>
+                    }
+                }
+                else
+                {
+                    <a href="/Teacher/Index?SortColumn=Email&IconClass=fa-sort-desc&PageNo=1" style="text-decoration:none;color:inherit">Email</a>
+                    if (ViewBag.SortColumn == "Email")
+                    {
+                        <i class="fa@ViewBag.IconClass"></i>
+                    }
+
+                }
+            </th>
+            <th style="width:10%">
+                @if (ViewBag.IconClass == "fa-sort-desc")
+                {
+                    <a href="/Teacher/Index?SortColumn=PhoneNo&IconClass=fa-sort-asc&PageNo=1" style="text-decoration:none;color:inherit">Phone No</a>
+                    if (ViewBag.SortColumn == "PhoneNo")
+                    {
+                        <i class="fa@ViewBag.IconClass"></i>
+                    }
+                }
+                else
+                {
+                    <a href="/Teacher/Index?SortColumn=PhoneNo&IconClass=fa-sort-desc&PageNo=1" style="text-decoration:none;color:inherit">Phone No</a>
+                    if (ViewBag.SortColumn == "PhoneNo")
+                    {
+                        <i class="fa@ViewBag.IconClass"></i>
+                    }
+
+                }
+            </th>
+            <th style="width:10%">
+                @if (ViewBag.IconClass == "fa-sort-desc")
+                {
+                    <a href="/Teacher/Index?SortColumn=DateOfJoining&IconClass=fa-sort-asc">Date Of Joining</a>
+                    if (ViewBag.SortColumn == "DateOfJoining")
+                    {
+                        <i class="fa@ViewBag.IconClass"></i>
+                    }
+                }
+                else
+                {
+                    <a href="/Teacher/Index?SortColumn=DateOfJoining&IconClass=fa-sort-desc&PageNo=1" style="text-decoration:none;color:inherit">Date Of Joining</a>
+                    if (ViewBag.SortColumn == "DateOfJoining")
+                    {
+                        <i class="fa@ViewBag.IconClass"></i>
+                    }
+
+                }
+            </th>
+            <th style="width:10%">
+                @if (ViewBag.IconClass == "fa-sort-desc")
+                {
+                    <a href="/Teacher/Index?SortColumn=Address&IconClass=fa-sort-asc&PageNo=1" style="text-decoration:none;color:inherit">Address</a>
+                    if (ViewBag.SortColumn == "Address")
+                    {
+                        <i class="fa@ViewBag.IconClass"></i>
+                    }
+                }
+                else
+                {
+                    <a href="/Teacher/Index?SortColumn=Address&IconClass=fa-sort-desc&PageNo=1" style="text-decoration:none;color:inherit">Address</a>
+                    if (ViewBag.SortColumn == "Address")
+                    {
+                        <i class="fa@ViewBag.IconClass"></i>
+                    }
+
+                }
+            </th>
+            <th style="width:10%">
+                @if (ViewBag.IconClass == "fa-sort-desc")
+                {
+                    <a href="/Teacher/Index?SortColumn=DeptId&IconClass=fa-sort-asc&PageNo=1" style="text-decoration:none;color:inherit">Departments</a>
+                    if (ViewBag.SortColumn == "DeptId")
+                    {
+                        <i class="fa@ViewBag.IconClass"></i>
+                    }
+                }
+                else
+                {
+                    <a href="/Teacher/Index?SortColumn=DeptId&IconClass=fa-sort-desc&PageNo=1" style="text-decoration:none;color:inherit">Departments</a>
+                    if (ViewBag.SortColumn == "DeptId")
+                    {
+                        <i class="fa@ViewBag.IconClass"></i>
+                    }
+
+                }
+            </th>
+
+          <th>Status</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr id="row_@item.teacherId">
+
+                @*<td><img src="data:image;base64,@item.Photo" width="100px" /></td>*@
+                <td><img src="@Url.Content(item.Photo)" width="80" height="80"</td>
+                @*<td>@item.teacherId</td>
+
+                    <td>@item.teacherName</td>
+                    <td>@item.Email</td>
+                    <td>@item.PhoneNo</td>
+                    <td>@item.DateOfJoining</td>
+                    <td>@item.Address</td>
+                    <td>@item.DeptId</td>*@
+                <td> @Html.DisplayFor(temp => item.teacherId)   </td>
+                <td>@Html.DisplayFor(temp => item.teacherName)</td>
+                <td>@Html.DisplayFor(temp => item.Email)</td>
+                <td>@Html.DisplayFor(temp => item.PhoneNo)</td>
+
+                <td>@Html.DisplayFor(temp => item.DateOfJoining)</td>
+                <td>@Html.DisplayFor(temp => item.Address)</td>
+                <td>
+                    @if (item.Department != null)
+                    {
+
+                        @*<span>@item.Category.CategoryName</span>*@
+                        @Html.DisplayFor(temp => item.Department.DeptName)
+                    }
+                </td>
+
+
+
+                <td>
+                    <a class="btn btn-info" href="/Teacher/Details/@item.teacherId">Details</a>
+                    <a class="btn btn-success" href="/Teacher/edit/@item.teacherId">Edit</a>
+                    @*<a href="/Teacher/delete/@item.teacherId">Delete</a>*@
+                    <a class="btn btn-danger" href="#" onclick="ConfirmDelete(@item.teacherId)">Delete</a>
+
+                </td>
+
+            </tr>
+
+        }
+        <tr>
+            <td colspan="9">
+                @{ int PrevPageNo = ViewBag.PageNo - 1;
+                    if (PrevPageNo <= 0)
+                    {
+                        PrevPageNo = 1;
+                    }
+
+                    int NextPageNo = ViewBag.PageNo + 1;
+                    if (NextPageNo > ViewBag.NoOfPages)
+                    {
+                        NextPageNo = ViewBag.NoOfPages;
+                    } }
+                <ul class="pagination justify-content-center">
+                    <li class="page-item active">
+                        <a class="page-link" href="/Teacher/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@PrevPageNo">Prev</a>
+                    </li>
+                    @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                    {
+                        if ((i + 1) == ViewBag.PageNo)
+                        {
+                            <li class="page-item active">
+                                <a class="page-link" href="/Teacher/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@(i+1)">@(i+1)</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="/Teacher/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@(i+1)">@(i+1)</a>
+                            </li>
+                        }
+
+                    }
+                    <li class="page-item active">
+                        <a class="page-link" href="/Teacher/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@NextPageNo">Next</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Delete Teacher</h3>
+                    @* <a href="#" class="close" data-dismiss="modal">&times;</a>*@
+
+                </div>
+                <div class="modal-body">
+                    <h4>Are you sure ? You want to delete this</h4>
+
+                    <div style="text-align:center;display:none" id="loaderDiv">
+                        @*<img src="~/Content/InternetSlowdown_Day.gif" width="150" />*@
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" onclick="cancel()" data - dismiss="modal"> Cancel</a>
+                    <a href="#" class="btn btn-success" onclick="Delete()">Confirm</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <input type="hidden" id="hiddenteacherId" />
+
+    <script>
+
+        var ConfirmDelete = function (teacherId) {
+
+            $("#hiddenteacherId").val(teacherId);
+            $("#myModal").modal('show');
+
+        }
+
+        var Delete = function () {
+
+            $("#loaderDiv").show();
+
+            var teacherId = $("#hiddenteacherId").val();
+
+            $.ajax({
+
+                type: "POST",
+                url: "/Teacher/delete",
+                data: { id: teacherId },
+                success: function (result) {
+                    $("#loaderDiv").hide();
+                    $("#myModal").modal("hide");
+                    $("#row_" + teacherId).remove();
+
+                }
+
+            })
+
+        }
+        var cancel = function () {
+            $("#myModal").modal("hide");
+        }
+
+
+
+
+    </script>
+
+

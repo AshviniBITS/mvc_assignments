@@ -1,0 +1,100 @@
+﻿@model List<CollegeManagementProject.Models.Department>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Department details</h2>
+<a href="/Department/create/" class="btn btn-outline-primary">Add Department</a>
+<table class="table">
+    <tr>
+        <th>Department Id</th>
+        <th>Department Name</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr id="row_@item.DeptId">
+            <td>@item.DeptId</td>
+            <td>@item.DeptName</td>
+
+            <td>
+                @*<a href="/Department/delete/@item.DeptId" class="btn btn-outline-primary">Delete</a>*@
+                <a class="btn btn-danger" href="#" onclick="ConfirmDelete(@item.DeptId)">Delete</a>
+            </td>
+        </tr>
+
+    }
+
+</table>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Delete Department</h3>
+                @* <a href="#" class="close" data-dismiss="modal">&times;</a>*@
+
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure ? You want to delete this</h4>
+
+                <div style="text-align:center;display:none" id="loaderDiv">
+                    @*<img src="~/Content/InternetSlowdown_Day.gif" width="150" />*@
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" onclick="cancel()" data - dismiss="modal"> Cancel</a>
+                <a href="#" class="btn btn-success" onclick="Delete()">Confirm</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<input type="hidden" id="hiddenDeptId" />
+
+<script>
+
+    var ConfirmDelete = function (DeptId) {
+
+        $("#hiddenDeptId").val(DeptId);
+        $("#myModal").modal('show');
+
+    }
+
+    var Delete = function () {
+
+        $("#loaderDiv").show();
+
+        var DeptId = $("#hiddenDeptId").val();
+
+        $.ajax({
+
+            type: "POST",
+            url: "/Department/delete",
+            data: { id: DeptId },
+            success: function (result) {
+                $("#loaderDiv").hide();
+                $("#myModal").modal("hide");
+                $("#row_" + DeptId).remove();
+
+            }
+
+        })
+
+    }
+    var cancel = function () {
+        $("#myModal").modal("hide");
+    }
+
+
+
+
+</script>
+
+
+
+
+
+

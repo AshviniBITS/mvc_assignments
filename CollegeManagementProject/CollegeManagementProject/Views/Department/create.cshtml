@@ -1,0 +1,77 @@
+﻿
+@model CollegeManagementProject.Models.Department
+@{
+    ViewBag.Title = "create";
+    Layout = "~/Views/shared/_LayoutPage1.cshtml";
+
+
+}
+@*<!Doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Remote Valiation Demo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.js"></script>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+
+
+            $("#myForm").validate({
+                rules: {
+                    DeptName: {
+                        required: true,
+                        remote: {
+                            url: "/Department/CheckIsValidEmployee",
+                            type: "post",
+                            data: {
+                                username: function () {
+                                    return $("#DeptName").val();
+                                }
+                            }
+                        }
+
+                    },
+                        //EmployeeAddress: {
+                        //    required:true
+                        //}
+                    /*},*/ messages: {
+                        DeptName: {
+                            required: "Department is Required",
+                            remote: "Department already in use."
+                        },
+                        //    EmployeeAddress: {
+                        //        required: "Address is Required"
+                        //    }
+                    }
+                });
+
+        });
+    </script>
+    </head>
+</html>*@
+
+    <h2>Add Department</h2>
+
+
+    @using (Html.BeginForm("create", "Department", FormMethod.Post))
+    {
+        <div class="form-row">
+            @Html.LabelFor(temp => temp.DeptId)
+            @Html.TextBoxFor(temp => temp.DeptId, new { placeholder = "Department Id ", @class = "form-control" })
+        </div>
+        <div class="form-row">
+            @Html.LabelFor(temp => temp.DeptName)
+            @Html.TextBoxFor(temp => temp.DeptName, new { placeholder = "Department Name", @class = "form-control" })
+        </div>
+        <button type="submit" class="btn btn-success">Create</button>
+        <a class="btn btn-danger" href="/Department/Index">Cancle</a>
+    }

@@ -1,0 +1,30 @@
+﻿
+@model CollegeManagementProject.Models.Department
+@{
+    ViewBag.Title = "create";
+    Layout = "~/Views/shared/_LayoutPage1.cshtml";
+
+
+}
+<h2>Delete Department</h2>
+
+
+<form action="/Department/delete/@Model.DeptId" method="post">
+    
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+       
+            <label for="DeptName">Department Name</label>
+            <input type="hidden" name="ProductId" value="@Model.DeptId" />
+
+            @Model.DeptName
+       
+            </div>
+
+        </div>
+    
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a class="btn btn-success" href="/Department/index">Cancle</a>
+
+</form>

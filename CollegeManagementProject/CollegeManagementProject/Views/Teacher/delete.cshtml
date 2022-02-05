@@ -1,0 +1,25 @@
+﻿
+@model CollegeManagementProject.Models.Teacher
+@{
+    ViewBag.Title = "delete";
+    Layout = "~/Views/shared/_LayoutPage1.cshtml";
+}
+
+<h2>delete Teacher Record</h2>
+<form action="/Teacher/delete/@Model.teacherId" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="teacherName">Teacher Name</label>
+            <input type="hidden" name="teacherId" value="@Model.teacherId" />
+
+            @Model.teacherName
+        </div>
+       
+    </div>
+    <button type="submit" class="btn btn-success">Delete</button>
+    <a class="btn btn-danger" href="/Teacher/index">Cancle</a>
+
+</form>
+
+
+

@@ -1,0 +1,65 @@
+﻿@model CollegeManagementProject.Models.Teacher
+@{
+    ViewBag.Title = "create";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>create</h2>
+@using (Html.BeginForm("create", "Teacher", FormMethod.Post,new { enctype = "multipart/form-data" }))
+{
+
+
+    <div class="form-row">
+        @Html.LabelFor(temp => temp.teacherName)
+        @Html.TextBoxFor(temp => temp.teacherName, new { placeholder = "Teacher Name", @class = "form-control" })
+        @Html.ValidationMessageFor(temp=>temp.teacherName)
+
+
+    </div>
+
+    <div class="form-row">
+        @Html.LabelFor(temp => temp.Email)
+        @Html.TextBoxFor(temp => temp.Email, new { placeholder = "Teacher Email", @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.Email)
+
+
+    </div>
+    <div class="form-row">
+        @Html.LabelFor(temp => temp.PhoneNo)
+        @Html.TextBoxFor(temp => temp.PhoneNo, new { placeholder = "Phone No", @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.PhoneNo)
+
+
+    </div>
+    <div class="form-row">
+        @Html.LabelFor(temp => temp.DateOfJoining)
+        @Html.TextBoxFor(temp => temp.DateOfJoining, new { placeholder = "Date of Joining", @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.DateOfJoining)
+
+
+    </div>
+    <div class="form-row">
+        @Html.LabelFor(temp => temp.Address)
+        @Html.TextBoxFor(temp => temp.Address, new { placeholder = "Address", @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.Address)
+
+
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            @Html.LabelFor(temp => temp.Department)
+            @Html.DropDownListFor(temp => temp.DeptId, new SelectList(@ViewBag.Departments, "DeptId", "DeptName"), "please select", new { @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.Department)
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label for="Image">Image</label>
+        <input type="file" class="form-control-file" id="file" name="file" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Create</button>
+    <a class="btn btn-danger" href="/Teacher/Index">Cancle</a>
+}
+
