@@ -1,0 +1,110 @@
+﻿
+@model CollegeManagementProject.Models.Teacher
+@{
+    ViewBag.Title = "edit";
+    Layout = "~/Views/shared/_LayoutPage1.cshtml";
+}
+
+<h2>edit</h2>
+@*<form action="/Teacher/edit/@Model.teacherId" method="post">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="TeacherName">Teacher Name</label>
+                <input type="hidden" name="teacherId" value="@Model.teacherId" />
+                <input type="text" class="form-control" id="teacherName" placeholder="Teacher Name" name="teacherName" value="@Model.teacherName" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="Price">Email</label>
+                <input type="text" class="form-control" id="Email" placeholder="Email" name="Email" value="@Model.Email" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="PhoneNo">Phone No</label>
+                <input type="text" class="form-control" id="PhoneNo" placeholder="Phone No" name="PhoneNo" value="@Model.PhoneNo" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="DateOfJoining">Date Of Joining</label>
+                <input type="text" class="form-control" id="DateOfJoining" placeholder="DateOfJoining" name="DateOfJoining" value="@Model.DateOfJoining"  />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="Addresss">Address</label>
+                <input type="text" class="form-control" id="Address" placeholder="Address" name="Address" value="@Model.Address" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="DepartmentId">Department Name</label>
+                <select class="form-control" id="DeptId" placeholder="Department id" name="DeptId" value="@Model.DeptId">
+                    <option value="">Please Select</option>
+                    @foreach (var dept in ViewBag.Departments)
+                    {
+                        if (dept.DeptId == Model.DeptId)
+                        {
+                            <option value="@dept.DeptId" selected="selected">@dept.DeptName</option>
+                            <a href="~/Views/Teacher/edit.cshtml">~/Views/Teacher/edit.cshtml</a>
+                        }
+                        else
+                        {
+                            <option value="@dept.DeptId">@dept.DeptName</option>
+                        }
+
+                    }
+                </select>
+            </div>
+
+
+            <button type="submit" class="btn btn-success">Save</button>
+            <a class="btn btn-danger" href="/Teacher/index">Cancle</a>
+    </form>*@
+@using (Html.BeginForm("edit", "Teacher", FormMethod.Post, new {enctype="multipart/form-data"}))
+{
+    <div class="form-row" style="background-color:white ; color:black">
+        @Html.LabelFor(temp => temp.teacherName)
+        @Html.TextBoxFor(temp => temp.teacherName, Model.teacherName, new { placeholder = "Teacher Name", @class = "form-control" })
+        @Html.HiddenFor(temp => temp.teacherId, Model.teacherId)
+
+    </div>
+
+    <div class="form-row" style="background-color:white ; color:black">
+        @Html.LabelFor(temp => temp.Email)
+        @Html.TextBoxFor(temp => temp.Email, Model.Email, new { placeholder = "Teacher Email", @class = "form-control" })
+
+
+    </div>
+    <div class="form-row" style="background-color:white; color:black">
+        @Html.LabelFor(temp => temp.PhoneNo)
+        @Html.TextBoxFor(temp => temp.PhoneNo, Model.PhoneNo, new { placeholder = "Phone No", @class = "form-control" })
+
+
+    </div>
+    <div class="form-row" style="background-color:white ; color:black">
+        @Html.LabelFor(temp => temp.DateOfJoining)
+        @Html.TextBoxFor(temp => temp.DateOfJoining, Model.DateOfJoining, new { placeholder = "Date of Joining", @class = "form-control" })
+
+
+    </div>
+    <div class="form-row" style="background-color:white ; color:black">
+        @Html.LabelFor(temp => temp.Address)
+        @Html.TextBoxFor(temp => temp.Address, Model.Address, new { placeholder = "Address", @class = "form-control" })
+
+
+    </div>
+
+    <div class="form-row" style="background-color:white; color:black">
+        <div class="form-group col-md-6">
+            @Html.LabelFor(temp => temp.Department)
+            @Html.DropDownListFor(temp => temp.DeptId, new SelectList(@ViewBag.Departments, "DeptId", "DeptName"), "please select", new { @class = "form-control" })
+        </div>
+
+    </div>
+    <div class="form-group" style="background-color:white ; color:black">
+        <label for="Image">Image</label>
+        <img src="@Url.Content(Model.Photo)" width="80" height="80"/>
+        <input type="file" class="form-control-file" id="file" name="Photo" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a class="btn btn-danger" href="/Teacher/index">Cancle</a>
+}
+
+
+
+
+
